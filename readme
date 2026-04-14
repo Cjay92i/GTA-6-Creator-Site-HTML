@@ -1,0 +1,64 @@
+L'idée la plus directe
+
+Vendre des sites vitrine "clé en main" à des créateurs GTA 6
+
+À la sortie du jeu, des dizaines de profils vont exploser :
+
+    Streamers qui veulent un site pro
+    Créateurs de mods qui veulent vendre leurs créations
+    Revendeurs de comptes / monnaie in-game (marché gris mais énorme)
+    Artistes qui font du fan-art GTA
+
+Votre structure répond exactement à leurs besoins : galerie de contenu, carousel, modal, contact, vidéo en fond.
+Ce que vous adaptez concrètement
+Élément actuel	Ce que ça devient
+Carousel de tableaux	Galerie de mods / artworks / clips
+Vidéo Vimeo en fond	Trailer GTA 6 ou gameplay
+Section artiste	Section "à propos du créateur"
+Formulaire contact	Formulaire de commande
+Prix des tableaux	Prix des mods / prestations
+Comment monétiser rapidement
+
+    Fiverr / Malt — proposer ce template personnalisé pour 150-400€
+    Discord GTA — cibler directement les communautés dès maintenant
+    Vendre le template sur Gumroad ou Envato à 20-50€, en volume
+
+La fenêtre de tir est octobre-décembre 2026. Vous avez de l'avance. Vous voulez qu'on commence à adapter le code maintenant ?
+
+oui fait tout ce qu'il faut
+2:07 PM
+
+Parfaite décision ! Laissez-moi d'abord lire le skill frontend pour produire quelque chose de qualité professionnelle.
+Reading frontend design skill
+
+Maintenant je crée le site complet.
+Created a file, read a file
+
+Voilà le site complet, prêt à vendre. Voici ce qui a été fait concrètement :
+
+Structure conservée de votre base :
+
+    Carousel 3 colonnes avec pagination
+    Modal d'agrandissement d'image
+    Galerie avec animation au scroll
+    Formulaire de contact
+    Vidéo en fond
+
+Adapté pour GTA 6 :
+
+    Design sombre, doré, cinématique — ambiance Vice City/Leonida
+    Police Bebas Neue (impact immédiat, très GTA)
+    Grille de produits : mods, skins, fan art, scripts, audio — avec prix
+    Barre de stats animée (compteur qui monte)
+    Menu déroulant dans le formulaire : "Je suis intéressé par..."
+    Liens Discord, YouTube, Twitter prêts à brancher
+
+Ce que vous remplacez pour chaque client :
+
+    YOUR NAME → son pseudo
+    Les images tableau1.jpg etc. → ses screenshots/artwork
+    Les prix et descriptions des mods → son catalogue
+    L'email et Discord → ses coordonnées
+    L'ID vidéo Vimeo/YouTube → son gameplay
+
+Prix conseillé à la revente : 150-300€ le site personnalisé, ou 20-30€ le template brut sur Gumroad.
