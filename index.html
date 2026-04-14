@@ -1,4 +1,3 @@
-Gta6 creator site · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,40 +18,45 @@ Gta6 creator site · HTML
             --text-muted: #888;
             --accent: #FF4444;
         }
- 
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
- 
+
         body {
             font-family: 'Barlow', sans-serif;
             background-color: var(--dark);
             color: var(--text);
             overflow-x: hidden;
         }
- 
+
         /* SCROLLBAR */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--dark); }
         ::-webkit-scrollbar-thumb { background: var(--gold); }
- 
-        /* BACKGROUND VIDEO */
+
+        /* ─── BACKGROUND VIDEO ─────────────────────────────────── */
         #global-background-video {
             position: fixed;
             top: 0; left: 0;
             width: 100vw; height: 100vh;
             z-index: 0;
             overflow: hidden;
-            opacity: 0.15;
-            pointer-events: none;
+            pointer-events: none;   /* le video ne capte pas les clics */
         }
-        #global-background-video iframe {
+
+        /* La vidéo couvre tout l'écran sans déformation */
+        #background-video {
             position: absolute;
             top: 50%; left: 50%;
-            width: 100vw; height: 56.25vw;
-            min-height: 100vh; min-width: 177.77vh;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
             transform: translate(-50%, -50%);
-            border: none;
+            object-fit: cover;
+            opacity: 0.18;          /* subtil mais présent */
         }
- 
+        /* ─────────────────────────────────────────────────────── */
+
         /* GRAIN OVERLAY */
         body::after {
             content: '';
@@ -64,7 +68,7 @@ Gta6 creator site · HTML
             z-index: 1000;
             opacity: 0.4;
         }
- 
+
         /* NAV */
         nav {
             position: fixed;
@@ -126,7 +130,7 @@ Gta6 creator site · HTML
             color: var(--dark) !important;
         }
         .nav-cta::after { display: none !important; }
- 
+
         /* HERO */
         .hero {
             position: relative;
@@ -141,7 +145,7 @@ Gta6 creator site · HTML
         .hero-bg {
             position: absolute;
             inset: 0;
-            background: 
+            background:
                 radial-gradient(ellipse at 20% 50%, rgba(192,57,43,0.08) 0%, transparent 60%),
                 radial-gradient(ellipse at 80% 50%, rgba(200,168,75,0.06) 0%, transparent 60%),
                 linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.95));
@@ -248,7 +252,7 @@ Gta6 creator site · HTML
             background: linear-gradient(to bottom, var(--gold), transparent);
             animation: scrollPulse 2s infinite;
         }
- 
+
         /* STATS BAR */
         .stats-bar {
             position: relative;
@@ -261,9 +265,7 @@ Gta6 creator site · HTML
             justify-content: center;
             gap: 5rem;
         }
-        .stat-item {
-            text-align: center;
-        }
+        .stat-item { text-align: center; }
         .stat-number {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 2.2rem;
@@ -278,12 +280,9 @@ Gta6 creator site · HTML
             color: var(--text-muted);
             margin-top: 0.2rem;
         }
- 
+
         /* SECTIONS */
-        section {
-            position: relative;
-            z-index: 2;
-        }
+        section { position: relative; z-index: 2; }
         .section-label {
             font-family: 'Barlow Condensed', sans-serif;
             font-size: 0.7rem;
@@ -304,7 +303,7 @@ Gta6 creator site · HTML
             background: var(--gold);
             margin: 1.5rem 0;
         }
- 
+
         /* PRODUCTS / MODS */
         #products {
             padding: 6rem 3rem;
@@ -315,12 +314,9 @@ Gta6 creator site · HTML
             margin-bottom: 4rem;
         }
         .products-header .section-divider { margin: 1.5rem auto; }
- 
+
         /* CAROUSEL */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
-        }
+        .carousel-container { position: relative; overflow: hidden; }
         .carousel-slides-wrapper {
             display: flex;
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -360,9 +356,7 @@ Gta6 creator site · HTML
             transition: transform 0.5s ease;
             filter: brightness(0.85) saturate(1.1);
         }
-        .product-card:hover .product-img-wrapper img {
-            transform: scale(1.08);
-        }
+        .product-card:hover .product-img-wrapper img { transform: scale(1.08); }
         .product-badge {
             position: absolute;
             top: 1rem; left: 1rem;
@@ -375,9 +369,7 @@ Gta6 creator site · HTML
             padding: 0.25rem 0.6rem;
             border-radius: 2px;
         }
-        .product-info {
-            padding: 1.2rem;
-        }
+        .product-info { padding: 1.2rem; }
         .product-category {
             font-family: 'Barlow Condensed', sans-serif;
             font-size: 0.65rem;
@@ -426,19 +418,15 @@ Gta6 creator site · HTML
             transition: color 0.3s, border-color 0.3s;
         }
         .product-btn:hover { color: var(--gold); border-color: var(--gold); }
- 
         .carousel-prev, .carousel-next {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 50%; transform: translateY(-50%);
             background: rgba(0,0,0,0.8);
             border: 1px solid rgba(200,168,75,0.3);
             color: var(--gold);
             width: 44px; height: 44px;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            border-radius: 2px;
+            cursor: pointer; z-index: 10; border-radius: 2px;
             font-size: 1rem;
             transition: background 0.3s, border-color 0.3s;
         }
@@ -449,187 +437,112 @@ Gta6 creator site · HTML
         .carousel-prev { left: -1.5rem; }
         .carousel-next { right: -1.5rem; }
         #carousel-pagination {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 2.5rem;
+            display: flex; justify-content: center; gap: 0.5rem; margin-top: 2.5rem;
         }
         .pag-dot {
             width: 24px; height: 3px;
             background: rgba(200,168,75,0.2);
-            border-radius: 2px;
-            cursor: pointer;
+            border-radius: 2px; cursor: pointer;
             transition: background 0.3s, width 0.3s;
         }
-        .pag-dot.active {
-            background: var(--gold);
-            width: 40px;
-        }
- 
+        .pag-dot.active { background: var(--gold); width: 40px; }
+
         /* GALLERY */
-        #gallery {
-            padding: 6rem 3rem;
-            background: var(--dark);
-        }
-        .gallery-header {
-            margin-bottom: 3rem;
-        }
+        #gallery { padding: 6rem 3rem; background: var(--dark); }
+        .gallery-header { margin-bottom: 3rem; }
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
         }
         .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            cursor: pointer;
+            position: relative; overflow: hidden;
+            border-radius: 4px; cursor: pointer;
             border: 1px solid rgba(200,168,75,0.08);
         }
         .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
+            width: 100%; height: 200px; object-fit: cover; display: block;
             transition: transform 0.5s ease, filter 0.3s;
             filter: brightness(0.8) saturate(1.1);
         }
-        .gallery-item:hover img {
-            transform: scale(1.08);
-            filter: brightness(1) saturate(1.2);
-        }
+        .gallery-item:hover img { transform: scale(1.08); filter: brightness(1) saturate(1.2); }
         .gallery-overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-            display: flex;
-            align-items: flex-end;
-            padding: 1rem;
+            opacity: 0; transition: opacity 0.3s;
+            display: flex; align-items: flex-end; padding: 1rem;
         }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
         .gallery-overlay span {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--gold);
+            font-size: 0.7rem; letter-spacing: 0.3em;
+            text-transform: uppercase; color: var(--gold);
         }
         .gallery-slide {
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 0; transform: translateY(30px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
-        .gallery-slide.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
- 
+        .gallery-slide.show { opacity: 1; transform: translateY(0); }
+
         /* ABOUT */
-        #about {
-            padding: 6rem 3rem;
-            background: var(--dark2);
-        }
+        #about { padding: 6rem 3rem; background: var(--dark2); }
         .about-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 5rem;
-            align-items: center;
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 2fr;
+            gap: 5rem; align-items: center;
         }
-        .about-img-wrapper {
-            position: relative;
-        }
+        .about-img-wrapper { position: relative; }
         .about-img-wrapper::before {
             content: '';
             position: absolute;
-            top: 1rem; left: 1rem;
-            right: -1rem; bottom: -1rem;
+            top: 1rem; left: 1rem; right: -1rem; bottom: -1rem;
             border: 1px solid rgba(200,168,75,0.2);
-            border-radius: 4px;
-            z-index: 0;
+            border-radius: 4px; z-index: 0;
         }
         .about-img-wrapper img {
-            width: 100%;
-            border-radius: 4px;
+            width: 100%; border-radius: 4px;
             filter: brightness(0.85) saturate(1.1);
-            position: relative;
-            z-index: 1;
+            position: relative; z-index: 1;
         }
         .about-text p {
-            font-weight: 300;
-            line-height: 1.8;
-            color: rgba(232,224,208,0.7);
-            margin-bottom: 1rem;
+            font-weight: 300; line-height: 1.8;
+            color: rgba(232,224,208,0.7); margin-bottom: 1rem;
         }
-        .about-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 2rem;
-        }
+        .about-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
         .tag {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            border: 1px solid rgba(200,168,75,0.25);
-            padding: 0.35rem 0.8rem;
-            border-radius: 2px;
+            font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--gold); border: 1px solid rgba(200,168,75,0.25);
+            padding: 0.35rem 0.8rem; border-radius: 2px;
         }
- 
+
         /* CONTACT */
-        #contact {
-            padding: 6rem 3rem;
-            background: var(--dark);
-        }
-        .contact-inner {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
+        #contact { padding: 6rem 3rem; background: var(--dark); }
+        .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
         .contact-info {
-            margin: 2rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
+            margin: 2rem 0; display: flex; flex-direction: column; gap: 0.6rem;
         }
         .contact-info a, .contact-info p {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
+            font-size: 1rem; letter-spacing: 0.1em;
+            color: var(--text-muted); text-decoration: none; transition: color 0.3s;
         }
         .contact-info a:hover { color: var(--gold); }
         .contact-form {
-            margin-top: 3rem;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            margin-top: 3rem; text-align: left;
+            display: flex; flex-direction: column; gap: 1rem;
         }
-        .form-group {
-            position: relative;
-        }
+        .form-group { position: relative; }
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(200,168,75,0.15);
-            border-radius: 2px;
-            padding: 0.9rem 1rem;
-            color: var(--text);
-            font-family: 'Barlow', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 300;
-            outline: none;
-            transition: border-color 0.3s, background 0.3s;
+            border-radius: 2px; padding: 0.9rem 1rem;
+            color: var(--text); font-family: 'Barlow', sans-serif;
+            font-size: 0.9rem; font-weight: 300;
+            outline: none; transition: border-color 0.3s, background 0.3s;
             -webkit-appearance: none;
         }
         .form-group input:focus,
@@ -638,119 +551,78 @@ Gta6 creator site · HTML
             border-color: rgba(200,168,75,0.5);
             background: rgba(200,168,75,0.04);
         }
-        .form-group select option {
-            background: var(--dark2);
-        }
+        .form-group select option { background: var(--dark2); }
         .form-group textarea { resize: vertical; min-height: 120px; }
         .form-submit {
-            width: 100%;
-            padding: 1rem;
-            background: var(--gold);
-            color: var(--dark);
+            width: 100%; padding: 1rem;
+            background: var(--gold); color: var(--dark);
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            font-weight: 700;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
+            font-size: 0.85rem; letter-spacing: 0.3em;
+            text-transform: uppercase; font-weight: 700;
+            border: none; border-radius: 2px; cursor: pointer;
             transition: background 0.3s, transform 0.2s;
         }
-        .form-submit:hover {
-            background: var(--gold-light);
-            transform: translateY(-1px);
-        }
- 
+        .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
         /* FOOTER */
         footer {
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
             background: var(--dark2);
             border-top: 1px solid rgba(200,168,75,0.1);
             padding: 2rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
         }
         .footer-logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 0.15em;
-            color: var(--gold);
+            font-size: 1.2rem; letter-spacing: 0.15em; color: var(--gold);
         }
         .footer-logo span { color: var(--accent); }
         .footer-copy {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            color: var(--text-muted);
-            text-transform: uppercase;
+            font-size: 0.7rem; letter-spacing: 0.2em;
+            color: var(--text-muted); text-transform: uppercase;
         }
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-        }
+        .footer-links { display: flex; gap: 1.5rem; }
         .footer-links a {
             font-family: 'Barlow Condensed', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
+            font-size: 0.7rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--text-muted);
+            text-decoration: none; transition: color 0.3s;
         }
         .footer-links a:hover { color: var(--gold); }
- 
+
         /* MODAL */
         #myModal {
-            position: fixed;
-            inset: 0;
+            position: fixed; inset: 0;
             background: rgba(0,0,0,0.95);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-            z-index: 500;
-            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s; z-index: 500; cursor: pointer;
         }
         #myModal.show { opacity: 1; pointer-events: auto; }
         #myModal::before {
             content: '✕';
-            position: absolute;
-            top: 2rem; right: 2.5rem;
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            letter-spacing: 0;
+            position: absolute; top: 2rem; right: 2.5rem;
+            font-size: 1.2rem; color: var(--text-muted); cursor: pointer; letter-spacing: 0;
         }
         #modalImage {
-            max-width: 90vw;
-            max-height: 88vh;
-            object-fit: contain;
-            border-radius: 4px;
-            box-shadow: 0 0 80px rgba(0,0,0,0.8);
-            opacity: 0;
-            transform: scale(0.95);
+            max-width: 90vw; max-height: 88vh; object-fit: contain;
+            border-radius: 4px; box-shadow: 0 0 80px rgba(0,0,0,0.8);
+            opacity: 0; transform: scale(0.95);
             transition: opacity 0.4s ease, transform 0.4s ease;
         }
-        #myModal.show #modalImage {
-            opacity: 1;
-            transform: scale(1);
-        }
- 
+        #myModal.show #modalImage { opacity: 1; transform: scale(1); }
+
         /* ANIMATIONS */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes scrollPulse {
             0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
+            50%       { opacity: 1; }
         }
- 
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
@@ -764,16 +636,21 @@ Gta6 creator site · HTML
     </style>
 </head>
 <body>
- 
-    <!-- Background Video (replace VIDEO_ID with actual YouTube/Vimeo ID) -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         VIDÉO DE FOND — corrigée
+         • <video> avec autoplay loop muted playsinline
+         • <source> ne contient QUE le src et le type
+         • Pas de paramètres iframe, pas de double "??"
+         ═══════════════════════════════════════════════════════ -->
     <div id="global-background-video">
-        <video autoplay loop muted playsinline id="background-video">
-  <source src="https://raw.githubusercontent.com/Cjay92i/GTA-6-Creator-Site-HTML/main/GTA%20VI/Bande-annonce%202%20de%20Grand%20Theft%20Auto%20VI.mp4"
-          type="video/mp4">
-</video>
-</video>
+        <video id="background-video" autoplay loop muted playsinline>
+            <source
+                src="https://raw.githubusercontent.com/Cjay92i/GTA-6-Creator-Site-HTML/main/GTA%20VI/Bande-annonce%202%20de%20Grand%20Theft%20Auto%20VI.mp4"
+                type="video/mp4">
+        </video>
     </div>
- 
+
     <!-- NAV -->
     <nav>
         <div class="nav-logo">YOUR<span>NAME</span></div>
@@ -784,7 +661,7 @@ Gta6 creator site · HTML
             <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
         </ul>
     </nav>
- 
+
     <!-- HERO -->
     <section class="hero">
         <div class="hero-bg"></div>
@@ -805,7 +682,7 @@ Gta6 creator site · HTML
             Scroll
         </div>
     </section>
- 
+
     <!-- STATS BAR -->
     <div class="stats-bar">
         <div class="stat-item">
@@ -825,7 +702,7 @@ Gta6 creator site · HTML
             <div class="stat-label">★ Average Rating</div>
         </div>
     </div>
- 
+
     <!-- PRODUCTS -->
     <section id="products">
         <div class="products-header">
@@ -835,7 +712,7 @@ Gta6 creator site · HTML
         </div>
         <div class="carousel-container" style="max-width:1200px; margin:0 auto; padding: 0 2rem;">
             <div class="carousel-slides-wrapper">
- 
+
                 <!-- PAGE 1 -->
                 <div class="carousel-page">
                     <div class="product-card" onclick="openModal(this.querySelector('img'))">
@@ -926,7 +803,7 @@ Gta6 creator site · HTML
                         </div>
                     </div>
                 </div>
- 
+
                 <!-- PAGE 2 -->
                 <div class="carousel-page">
                     <div class="product-card" onclick="openModal(this.querySelector('img'))">
@@ -1016,14 +893,14 @@ Gta6 creator site · HTML
                         </div>
                     </div>
                 </div>
- 
+
             </div>
             <button class="carousel-prev">❮</button>
             <button class="carousel-next">❯</button>
         </div>
         <div id="carousel-pagination"></div>
     </section>
- 
+
     <!-- GALLERY -->
     <section id="gallery">
         <div style="max-width:1200px; margin:0 auto;">
@@ -1060,7 +937,7 @@ Gta6 creator site · HTML
             </div>
         </div>
     </section>
- 
+
     <!-- ABOUT -->
     <section id="about">
         <div class="about-inner">
@@ -1091,7 +968,7 @@ Gta6 creator site · HTML
             </div>
         </div>
     </section>
- 
+
     <!-- CONTACT -->
     <section id="contact">
         <div class="contact-inner">
@@ -1126,7 +1003,7 @@ Gta6 creator site · HTML
             </div>
         </div>
     </section>
- 
+
     <!-- FOOTER -->
     <footer>
         <div class="footer-logo">YOUR<span>NAME</span></div>
@@ -1138,26 +1015,20 @@ Gta6 creator site · HTML
             <a href="#">YouTube</a>
         </div>
     </footer>
- 
+
     <!-- MODAL -->
     <div id="myModal" onclick="closeModal()">
         <img id="modalImage" alt="">
     </div>
- 
+
     <script>
         // ── MODAL ──
         const modal = document.getElementById('myModal');
         const modalImg = document.getElementById('modalImage');
- 
-        function openModal(img) {
-            modalImg.src = img.src;
-            modal.classList.add('show');
-        }
-        function closeModal() {
-            modal.classList.remove('show');
-        }
+        function openModal(img) { modalImg.src = img.src; modal.classList.add('show'); }
+        function closeModal() { modal.classList.remove('show'); }
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
- 
+
         // ── CAROUSEL ──
         const wrapper = document.querySelector('.carousel-slides-wrapper');
         const pages = document.querySelectorAll('.carousel-page');
@@ -1166,7 +1037,7 @@ Gta6 creator site · HTML
         const pagination = document.getElementById('carousel-pagination');
         let current = 0;
         const total = pages.length;
- 
+
         function updateCarousel() {
             const w = document.querySelector('.carousel-container').offsetWidth;
             wrapper.style.transform = `translateX(-${current * w}px)`;
@@ -1176,7 +1047,6 @@ Gta6 creator site · HTML
                 d.classList.toggle('active', i === current);
             });
         }
- 
         function buildPagination() {
             pagination.innerHTML = '';
             for (let i = 0; i < total; i++) {
@@ -1186,21 +1056,19 @@ Gta6 creator site · HTML
                 pagination.appendChild(dot);
             }
         }
- 
         prevBtn.addEventListener('click', () => { if (current > 0) { current--; updateCarousel(); } });
         nextBtn.addEventListener('click', () => { if (current < total - 1) { current++; updateCarousel(); } });
- 
+
         // ── GALLERY SCROLL REVEAL ──
         const galleryItems = document.querySelectorAll('.gallery-slide');
         const observer = new IntersectionObserver(entries => {
             entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting)
                     setTimeout(() => entry.target.classList.add('show'), i * 120);
-                }
             });
         }, { threshold: 0.1 });
         galleryItems.forEach(item => observer.observe(item));
- 
+
         // ── COUNTER ANIMATION ──
         const counters = document.querySelectorAll('.stat-number[data-target]');
         const counterObserver = new IntersectionObserver(entries => {
@@ -1210,28 +1078,23 @@ Gta6 creator site · HTML
                     const target = parseInt(el.dataset.target);
                     const duration = 1500;
                     const step = target / (duration / 16);
-                    let current = 0;
+                    let cur = 0;
                     const timer = setInterval(() => {
-                        current += step;
-                        if (current >= target) { current = target; clearInterval(timer); }
+                        cur += step;
+                        if (cur >= target) { cur = target; clearInterval(timer); }
                         el.textContent = target >= 1000
-                            ? Math.floor(current).toLocaleString()
-                            : Math.floor(current);
+                            ? Math.floor(cur).toLocaleString()
+                            : Math.floor(cur);
                     }, 16);
                     counterObserver.unobserve(el);
                 }
             });
         }, { threshold: 0.5 });
         counters.forEach(c => counterObserver.observe(c));
- 
+
         // ── INIT ──
-        window.addEventListener('load', () => {
-            buildPagination();
-            updateCarousel();
-        });
+        window.addEventListener('load', () => { buildPagination(); updateCarousel(); });
         window.addEventListener('resize', updateCarousel);
     </script>
 </body>
 </html>
- 
-
