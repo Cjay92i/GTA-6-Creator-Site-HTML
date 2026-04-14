@@ -36,21 +36,44 @@ Gta6 creator site · HTML
  
         /* BACKGROUND VIDEO */
         #global-background-video {
-            position: center;
-            top: 200; left: 200;
-            width: 500vw; height: 500vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             z-index: 0;
             overflow: hidden;
-            opacity: 0.20;
+            opacity: 0.3;
             pointer-events: none;
-        }
+            background-color: transparent;
+            background-image: url('images/fallback.jpg');
+            background-size: cover;
+            background-position: center;
+            
         #global-background-video iframe {
+            global-background-video iframe {
             position: absolute;
-            top: 100%; left: 100%;
-            width: 500vw; height: 156.25vw;
-            min-height: 100vh; min-width: 177.77vh;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw;
+            min-height: 100vh;
+            min-width: 177.77vh;
             transform: translate(-50%, -50%);
             border: none;
+            background-color: transparent;
+
+                        #video-loading {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 4px;
+            z-index: 100;
+            display: none;
+                            
         }
  
         /* GRAIN OVERLAY */
